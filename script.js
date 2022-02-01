@@ -168,6 +168,7 @@ const loadImg = function (entries, observer) {
 const obsOptions3 = {
   root: null,
   threshold: 0,
+  rootMargin: '200px',
 };
 const imgObserver = new IntersectionObserver(loadImg, obsOptions3);
 
