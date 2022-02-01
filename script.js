@@ -7,6 +7,8 @@ const modal = document.querySelector('.modal');
 const overlay = document.querySelector('.overlay');
 const btnCloseModal = document.querySelector('.btn--close-modal');
 const btnsOpenModal = document.querySelectorAll('.btn--show-modal');
+const btnScrollTo = document.querySelector('.btn--scroll-to');
+const section1 = document.querySelector('#section--1');
 
 const openModal = function (e) {
   e.preventDefault();
@@ -30,47 +32,33 @@ document.addEventListener('keydown', function (e) {
   }
 });
 
-const header = document.querySelector('.header');
-const body = document.querySelector('.body');
-const message = document.createElement('div');
-message.classList.add('cookie-message');
-message.innerHTML =
-  'We use cookies for improved functionality and analytics. <button class="btn btn--close-cookie"> Got it!</button>';
-
-header.append(message);
-
-document
-  .querySelector('.btn--close-cookie')
-  .addEventListener('click', function () {
-    message.remove();
-    //Old method
-    //message.parentElement.removeChild(message);
-  });
-
-message.style.backgroundColor = '#37383d';
-message.style.width = '102%';
-
-message.style.height =
-  Number.parseFloat(getComputedStyle(message).height, 10) + 20 + 'px';
-
-const btnScrollTo = document.querySelector('.btn--scroll-to');
-const section1 = document.querySelector('#section--1');
-
+//Scrolling
 btnScrollTo.addEventListener('click', function (e) {
   const s1coords = section1.getBoundingClientRect();
-
-  // console.log(s1coords);
-
-  // console.log(e.target.getBoundingClientRect());
-
-  // console.log('Current scroll (x/y)', window.pageXOffset, window.pageYOffset);
-
   /*
   window.scrollTo({
     left: s1coords.left + window.pageXOffset,
     top: s1coords.top + window.pageYOffset,
     behavior: 'smooth',
-  });
 */
   section1.scrollIntoView({ behavior: 'smooth' });
+});
+
+//Navigation
+
+// document.querySelectorAll('.nav__link').forEach(function (el) {
+//   el.addEventListener('click', function (e) {
+//     e.preventDefault();
+//     const id = this.getAttribute('href');
+//     document.querySelector(id).scrollIntoView({ behavior: 'smooth' });
+//   });
+// });
+
+document.querySelector('.nav__links').addEventListener('click', function (e) {
+  e.preventDefault();
+
+  if (e.target.classList.contains('nav__link')) {
+    const id = e.target.getAttribute('href');
+    document.querySelector(id).scrollIntoView({ behavior: 'smooth' });
+  }
 });
