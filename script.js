@@ -25,7 +25,8 @@ const openModal = function (e) {
   overlay.classList.remove('hidden');
 };
 
-const closeModal = function () {
+const closeModal = function (e) {
+  e.preventDefault();
   modal.classList.add('hidden');
   overlay.classList.add('hidden');
 };
@@ -241,7 +242,6 @@ const slider = function () {
   btnLeft.addEventListener('click', prevSlide);
 
   document.addEventListener('keydown', function (e) {
-    console.log(e);
     if (e.key === 'ArrowLeft') prevSlide();
     if (e.key === 'ArrowRight') nextSlide();
   });
@@ -256,3 +256,8 @@ const slider = function () {
   });
 };
 slider();
+
+window.addEventListener('beforeunload', function (e) {
+  e.preventDefault();
+  e.returnValue = '';
+});
