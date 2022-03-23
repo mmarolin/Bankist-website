@@ -31,7 +31,6 @@ body {
   background-color: #f3f3f3;
 }
 
-/* GENERAL ELEMENTS */
 .section {
   padding: 15rem 3rem;
   border-top: 1px solid #ddd;
@@ -110,7 +109,6 @@ img {
   filter: blur(20px);
 }
 
-/* NAVIGATION */
 .nav {
   display: flex;
   justify-content: space-between;
